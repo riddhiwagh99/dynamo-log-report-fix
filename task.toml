@@ -1,0 +1,27 @@
+[task]
+name = "dynamo/log-report"
+description = "Parse an Apache-style access log and generate a JSON summary report."
+
+[metadata]
+category = "data_processing_and_etl"
+subcategory = "text_processing"
+task_objective = ["transform", "generate"]
+artifact_type = ["generated_output_artifact"]
+expert_time_estimate_hours = 0.3
+model_tested = ""
+agent_tested = ""
+difficulty_explanation = "The task requires parsing a small access log, counting requests, counting unique IP addresses, and identifying the most frequently requested path."
+solution_explanation = "Read the access log, extract IP addresses and request paths, compute the required statistics, and write the results as JSON."
+verification_explanation = "The verifier loads the generated JSON file and validates that all required fields exist and contain the expected values."
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+allow_internet = false
+mcp_servers = []
+
+[[artifacts]]
+path = "/app/report.json"
+required = true
+description = "Generated JSON summary report"
